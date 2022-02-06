@@ -14,6 +14,17 @@ router.get("/users", function (req, res, next) {
   res.send({usersArray});
 });
 
+router.get("/users/:id/logs", function (req, res, next) {
+  const form = formidable({multiples: true});
+  form.parse(req, (err, files) => {
+    const id = req.params._id;
+    console.log("Id: ", id);
+    const index = users.findIndex(object => +object._id === +id);
+    const retrievedUser = users[index];
+    res.send({retrievedUser});
+  })
+})
+
 router.post("/users", function (req, res, next) {
   const form = formidable({multiples: true});
   form.parse(req, (err, fields, files) => {
@@ -29,9 +40,7 @@ router.post("/users", function (req, res, next) {
     console.log(users);
     counter += 1;
     res.send({"username": username, "_id": id})
-   
   })
-  
 })
 
 router.post("/users/:_id/exercises", function (req, res, next) {
@@ -46,7 +55,7 @@ router.post("/users/:_id/exercises", function (req, res, next) {
     console.log("Id: ", id);
     const description = fields.description;
     console.log("Description: ", description);
-    const duration = fields.duration;
+    const duration = +fields.duration;
     console.log("Duration: ", duration);
     let date;
     if (fields.date !== undefined) {
