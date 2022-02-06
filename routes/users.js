@@ -1,5 +1,6 @@
 import express from "express";
 import formidable from "formidable";
+import url from "url";
 const router = express.Router();
 let counter = 0;
 
@@ -14,13 +15,41 @@ router.get("/users", function (req, res, next) {
   res.send({usersArray});
 });
 
-router.get("/users/:id/logs", function (req, res, next) {
+router.get("/users/:_id/logs", function (req, res, next) {
   const form = formidable({multiples: true});
   form.parse(req, (err, files) => {
     const id = req.params._id;
     console.log("Id: ", id);
+    const queryObject = url.parse(req.url, true).query;
+    console.log(queryObject);
+    const from = queryObject.from;
+    const to = queryObject.to;
+    const limit = queryObject.limit;
+    
     const index = users.findIndex(object => +object._id === +id);
     const retrievedUser = users[index];
+
+    if (from) {
+      retrievedUser = retrievedUser.log.filter(obj => {
+        const dateString = obj.date;
+        const date = new Date(dateString);
+        const dateInMilliseconds = date.getTime();
+        const fromDate = new Date(from);
+        const fromDateInMilliseconds = fromDate.getTime();
+        if (to) {
+          const toDate = new Date(to);
+          const toDateInMilliseconds = toDate.getTime();
+          return dateInMilliseconds >= fromDateInMilliseconds && dateInMilliseconds <= toDateInMilliseconds;
+        } else {
+          return dateInMilliseconds >= fromDateInMilliseconds;
+        }
+      })
+    }
+
+    if (limit) {
+      retrievedUser.log = retrievedUser.log.slice(0, limit + 1);
+    }
+
     res.send({retrievedUser});
   })
 })
