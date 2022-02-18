@@ -7,6 +7,15 @@ let counter = 0;
 let users = [];
 
 /* GET users listing. */
+router.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
+});
+router.get('/*', (req, res) => {
+  res.redirect('/');
+});
+
+
+
 router.get("/users", function (req, res, next) {
  let usersArray = users.map(object => {
   const newObj = {"username": object.username, "_id": object._id};
