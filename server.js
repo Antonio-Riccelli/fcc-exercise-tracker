@@ -25,27 +25,51 @@ app.get("/", (req, res) => {
 
 app.get("/api/users", async function (req, res, next) {
     const allUsers = await User.find({})
+    console.log("All the users: ", allUsers)
     const arrOfUsers = allUsers.map(el => {return {"username": el.username, "_id": el._id}})
     res.send({arrOfUsers})
 })
 
-app.get("/api/users/:_id/logs", upload.none(), function (req, res, next) {
-    res.send({"message":"Get request for count succeeded", "count": 1});
+app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
+    const id = String(req.params._id);
+    const retrievedUser = await User.findById(id);
+
+    res.send({retrievedUser});
 })
 
 app.post("/api/users", upload.none(), async function (req, res, next) {
     const username = req.body.username;
     const newUser = await User.create({"username": username});
+    console.log("The new user: ", newUser);
     res.send({username: newUser.username, _id: newUser._id});
 })
 
-app.post("/api/users/:_id/exercises", upload.none(), function (req, res, next) {
-    const id = req.params.id;
+app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, next) {
+    const id = String(req.params._id);
     const description = req.body.description;
     const duration = req.body.duration;
-    const date = (req.body.date) ? req.body.date : Date.now().toDateString();
+    const date = (req.body.date) ? req.body.date : new Date().toDateString();
+    const newLogEntry = {
+        "description": description,
+        "duration": duration,
+        "date": date
+    }
+    // console.log("Id", id, typeof id)
+    // const retrievedUserById = await User.findById(req.params._id);
+    // console.log("User retrieved by id", retrievedUserById);
+    const retrievedUser = await User.findByIdAndUpdate(id, {$push: {log: newLogEntry}});
+    await User.findByIdAndUpdate(id, {$inc: {count: 1}});
+    console.log(retrievedUser);
+    
+    const userToReturn = {
+        "username": retrievedUser.username,
+        "description": description,
+        "duration": duration,
+        "date": date,
+        "_id": retrievedUser._id
+    }
 
-    res.send({"message":"Post request with params succeeded"});
+    res.send({userToReturn});
 })
 
 
