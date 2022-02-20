@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-    username: String,
+const ExerciseLogSchema = new mongoose.Schema({
     count: Number,
     log: [
         {
@@ -12,8 +11,8 @@ const userSchema = new mongoose.Schema({
             },
         }
     ],
-});
+})
 
-const User = mongoose.model("User", userSchema);
+const ExerciseLog = mongoose.model("ExerciseLog", ExerciseLogSchema);
 
-module.exports = User;
+module.exports = ExerciseLog;
