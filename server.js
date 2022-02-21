@@ -27,7 +27,7 @@ app.get("/api/users", async function (req, res, next) {
     const allUsers = await User.find({})
     console.log("All the users: ", allUsers)
     const arrOfUsers = allUsers.map(el => {return {"_id": el._id,"username": el.username, "__v": el.__v}})
-    res.send({allUsers})
+    res.send({arrOfUsers})
 })
 
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
