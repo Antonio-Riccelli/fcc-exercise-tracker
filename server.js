@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 app.get("/api/users", async function (req, res, next) {
     const allUsers = await User.find({})
     console.log("All the users: ", allUsers)
-    // const arrOfUsers = allUsers.map(el => {return {"username": el.username, "_id": el._id}})
+    const arrOfUsers = allUsers.map(el => {return {"username": el.username, "_id": el._id, "__v": el.__v}})
     res.send({allUsers})
 })
 
