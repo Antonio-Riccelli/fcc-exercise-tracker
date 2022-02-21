@@ -33,6 +33,7 @@ app.get("/api/users", async function (req, res, next) {
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
     const id = String(req.params._id);
     const retrievedUser = await User.findById(id);
+    await User.find
 
     res.send({retrievedUser});
 })
@@ -54,9 +55,7 @@ app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, n
         "duration": duration,
         "date": date
     }
-    // console.log("Id", id, typeof id)
-    // const retrievedUserById = await User.findById(req.params._id);
-    // console.log("User retrieved by id", retrievedUserById);
+
     const retrievedUser = await User.findByIdAndUpdate(id, {$push: {log: newLogEntry}});
     await User.findByIdAndUpdate(id, {$inc: {count: 1}});
     console.log(retrievedUser);
