@@ -92,7 +92,8 @@ app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, n
     "description": description,
     "duration": duration,
     "date": date,
-    "_id": retrievedUser._id});
+    "_id": retrievedUser._id,
+    "__v": retrievedUser.__v});
 })
 
 
