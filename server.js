@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 require('dotenv').config();//import config.env file
 const User = require("./schema/User.js");
-const ExerciseLog = require("./schema/ExerciseLog.js");
+// const ExerciseLog = require("./schema/ExerciseLog.js");
 const multer  = require('multer');
 const url = process.env.MONGO_URL;
 const app = express();
@@ -26,8 +26,8 @@ app.get("/", (req, res) => {
 app.get("/api/users", async function (req, res, next) {
     const allUsers = await User.find({})
     console.log("All the users: ", allUsers)
-    const arrOfUsers = allUsers.map(el => {return {"username": el.username, "_id": el._id}})
-    res.send({arrOfUsers})
+    // const arrOfUsers = allUsers.map(el => {return {"username": el.username, "_id": el._id}})
+    res.send({allUsers})
 })
 
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
