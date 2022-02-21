@@ -88,12 +88,12 @@ app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, n
         "_id": retrievedUser._id
     }
 
-    res.send({   "username": retrievedUser.username,
+    res.send({  "_id": retrievedUser._id,
+      "username": retrievedUser.username,
+      "date": date,
+      "duration": +duration,
     "description": description,
-    "duration": +duration,
-    "date": date,
-    "_id": retrievedUser._id,
-    "__v": retrievedUser.__v});
+});
 })
 
 
