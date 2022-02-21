@@ -88,7 +88,11 @@ app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, n
         "_id": retrievedUser._id
     }
 
-    res.send({userToReturn});
+    res.send({   "username": retrievedUser.username,
+    "description": description,
+    "duration": duration,
+    "date": date,
+    "_id": retrievedUser._id});
 })
 
 
