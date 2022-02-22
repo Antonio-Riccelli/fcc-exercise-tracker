@@ -69,7 +69,7 @@ app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, n
     let date;
     if (req.body.date) {
         const elements = req.body.date.split("-");
-        date = new Date(elements[0], elements[1], elements[2]).toDateString();
+        date = new Date(elements[0], elements[1] - 1, elements[2]).toDateString();
     } else {
         date = new Date().toDateString();
     };
