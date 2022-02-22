@@ -33,9 +33,9 @@ app.get("/api/users", async function (req, res, next) {
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
     const id = String(req.params._id);
     const retrievedUser = await User.findById(id);
-    const from = req.params.from;
-    const to = req.params.to;
-    const limit = req.params.limit;
+    const from = req.query.from;
+    const to = req.query.to;
+    const limit = req.query.limit;
     if (from) {
         if (to) {
             retrievedUser.log = retrievedUser.log.filter(obj => {
@@ -66,10 +66,16 @@ app.post("/api/users", upload.none(), async function (req, res, next) {
 })
 
 app.post("/api/users/:_id/exercises", upload.none(), async function (req, res, next) {
+    let date;
+    if (req.body.date) {
+        const elements = req.body.date.split("-");
+        date = new Date(elements[0], elements[1], elements[2]).toDateString();
+    } else {
+        date = new Date().toDateString();
+    };
     const id = String(req.params._id);
     const description = req.body.description;
     const duration = req.body.duration;
-    const date = (req.body.date) ? req.body.date : new Date().toDateString();
     const newLogEntry = {
         "description": description,
         "duration": duration,
