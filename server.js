@@ -41,32 +41,46 @@ app.get("/api/users", async function (req, res, next) {
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
     const id = String(req.params._id);
     let retrievedUser = await User.findById(id);
-    console.log("This is the retrieved User", retrievedUser);
-    const from = new Date(req.query.from)
-    const to = req.query.to;
+   
+    const from = new Date(req.query.from).valueOf();
+    console.log("This is the FROM value", from);
+    const to = new Date(req.query.to).valueOf();
+    console.log("This is the TO value", to, typeof to);
     const limit = req.query.limit;
-
-
+    console.log("This is the LIMIT", limit);
   
-    // if (from) {
-    //     if (to) {
-    //         retrievedUser.log = retrievedUser.log.filter(obj => {
-    //             return obj.date >= from && obj.date <= to
-    //         })
-    //     } else {
-    //         retrievedUser.log = retrievedUser.log.filter(obj => {
-    //             return obj.date >= from
-    //         })
-    //     }
-    // } else if (to) {
-    //     retrievedUser.log = retrievedUser.log.filter(obj => {
-    //         return obj.date <= to
-    //     })
-    // }
+    // console.log("USer log", retrievedUser.log);
 
-    // if (limit) {
-    //     retrievedUser.log = retrievedUser.log.slice(0, limit + 1);
-    // }
+    if (from) {
+        if (to) {
+            retrievedUser.log = retrievedUser.log.filter(obj => {
+                console.log("1st filter executing")
+                const objDate = new Date(obj.date).valueOf();
+                console.log("Objdate", objDate);
+                console.log.apply(objDate >= from &&  objDate <= to)
+                return objDate >= from && objDate <= to
+            })
+        } else {
+            retrievedUser.log = retrievedUser.log.filter(obj => {
+                console.log("2nd filter executing")
+                const objDate = new Date(obj.date).valueOf();
+                console.log("Objdate", objDate);
+                console.log("Result", objDate >= from)
+                return objDate > from
+            })
+        }
+    } else if (to) {
+        console.log("3rd filter executing")
+        retrievedUser.log = retrievedUser.log.filter(obj => {
+            const objDate = new Date(obj.date).valueOf();
+            return objDate <= to
+        })
+    }
+
+    if (limit !== undefined) {
+        retrievedUser.log = retrievedUser.log.slice(0, limit);
+    }
+    // console.log("Final:", retrievedUser);
     res.send( retrievedUser );
 })
 
