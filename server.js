@@ -41,42 +41,32 @@ app.get("/api/users", async function (req, res, next) {
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
     const id = String(req.params._id);
     let retrievedUser = await User.findById(id);
-    const from = new Date(req.query.from);
+    console.log("This is the retrieved User", retrievedUser);
+    const from = new Date(req.query.from)
     const to = req.query.to;
     const limit = req.query.limit;
 
-    retrievedUser.log = retrievedUser.log.map(el => {
 
-        const newDesc = el.description;
-        const newDur = el.duration;
-        const newDate = `${new Date(el.date).toDateString()}`
-
-        return {
-            "description": newDesc,
-            "duration": newDur,
-            "date": newDate,
-        }
-    })
   
-    if (from) {
-        if (to) {
-            retrievedUser.log = retrievedUser.log.filter(obj => {
-                return obj.date >= from && obj.date <= to
-            })
-        } else {
-            retrievedUser.log = retrievedUser.log.filter(obj => {
-                return obj.date >= from
-            })
-        }
-    } else if (to) {
-        retrievedUser.log = retrievedUser.log.filter(obj => {
-            return obj.date <= to
-        })
-    }
+    // if (from) {
+    //     if (to) {
+    //         retrievedUser.log = retrievedUser.log.filter(obj => {
+    //             return obj.date >= from && obj.date <= to
+    //         })
+    //     } else {
+    //         retrievedUser.log = retrievedUser.log.filter(obj => {
+    //             return obj.date >= from
+    //         })
+    //     }
+    // } else if (to) {
+    //     retrievedUser.log = retrievedUser.log.filter(obj => {
+    //         return obj.date <= to
+    //     })
+    // }
 
-    if (limit) {
-        retrievedUser.log = retrievedUser.log.slice(0, limit + 1);
-    }
+    // if (limit) {
+    //     retrievedUser.log = retrievedUser.log.slice(0, limit + 1);
+    // }
     res.send( retrievedUser );
 })
 
