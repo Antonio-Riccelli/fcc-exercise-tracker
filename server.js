@@ -41,7 +41,7 @@ app.get("/api/users", async function (req, res, next) {
 app.get("/api/users/:_id/logs", upload.none(), async function (req, res, next) {
     const id = String(req.params._id);
     let retrievedUser = await User.findById(id);
-    const from = req.query.from;
+    const from = new Date(req.query.from);
     const to = req.query.to;
     const limit = req.query.limit;
 
