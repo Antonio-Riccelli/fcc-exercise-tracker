@@ -1,0 +1,15 @@
+.AddExerciseSection {
+    background-color: antiquewhite;
+    width: 33.3%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.submitButton {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    width: 120px;
+    font-size: 1.2rem;
+}
