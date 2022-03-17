@@ -9,8 +9,12 @@ User can also filter by date and limit the number of results.
 
 Purpose of this project was for me to learn how to use MongoDB and Mongoose.
 
+The [deployed backend](https://fcc-exercise-trackr.herokuapp.com/) serves a basic static HTML page. I've also created a proper frontend using React, deployed on Netlify at [exercisetrackermern.netlify.app/](https://exercisetrackermern.netlify.app/) and accessible within the `/exercise-tracker` directory.
+
 ## Technologies
 
+- React
+- Axios
 - Node.JS
 - Express
 - MongoDB
