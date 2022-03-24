@@ -30,6 +30,22 @@ Alternatively, you can set up your own MongoDB database and connect to it.
 - open your IDE and run `npm i` to install all dependencies
 - run `npm start` or `npm run dev` to spin up the project
 
+---
+
+## How to use
+
+- First, create a new user by populating the __Create a new user form__ and submit. You will get username and id in return.
+- With the new id, you can populate and submit the __Add exercises__ form accordingly.
+- Instructions at the bottom of the page indicate how to access your user log at the dedicated endpoint.
+
+---
+
+## License
+
+[MIT](https://spdx.org/licenses/MIT.html)
+
+---
+
 ## Project diary and takeaways
 
 - 07/03/2022
@@ -39,7 +55,6 @@ Alternatively, you can set up your own MongoDB database and connect to it.
 
   An additional takeaway was how to use the backend to serve a static frontend using the base GET route.  
   The frontend is currently basic HTML, CSS and JavaScript, but my next step is to re-create it with React, so that this can be a full MERN stack app.
+- 24/03/2022
+  A proper frontend in React has now been created and is fully functional. Styling was also tweaked to be a bit more pleasant to the eye, though I still retained a very minimal look. This is mostly a backend project.
 
-## License
-
-[MIT](https://spdx.org/licenses/MIT.html)
