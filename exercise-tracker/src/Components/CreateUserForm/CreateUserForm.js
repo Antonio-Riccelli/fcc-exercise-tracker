@@ -23,12 +23,10 @@ export default function CreateUserForm({url, setCreatedUser, createdUser}) {
     }
 
     return (
-        <>
         <form encType="multipart/form" className={styles.CreateUserForm}>
-        <h3>Create a New User</h3>
-        <input id="uname" type="text" name="username" placeholder="username" onChange={handleChange} />
+        <h3 className={styles.createUserTitle}>Create a New User</h3>
+        <input id="uname" type="text" name="username" placeholder="Username" onChange={handleChange} className={styles.nameInput} />
         <input type="submit" value="Submit" onClick={handleSubmit} className={styles.submitButton}/>
       </form>
-      </>
     )
 }

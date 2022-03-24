@@ -1,9 +1,18 @@
 .AddExerciseSection {
     background-color: antiquewhite;
-    width: 33.3%;
-    padding: 10px;
+    width: 75%;
+    padding: 30px 30px 20px 30px;
     margin: 10px;
     border-radius: 15px;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.864);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.AddExerciseSection:hover {
+    box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.864);
 }
 
 .submitButton {
@@ -11,5 +20,35 @@
     margin: 5px;
     border-radius: 10px;
     width: 120px;
-    font-size: 1.2rem;
+    width: 45%;
+    box-shadow: 2px 2px 5px 1px black;
+    cursor: pointer;
 }
+
+.submitButton:hover {
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.864);
+}
+
+.submitButton:active {
+    position: relative;
+    top: 3px;
+    background-color: #CDC6C4;
+}
+
+.Inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.fieldsInput {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.864);
+}
+

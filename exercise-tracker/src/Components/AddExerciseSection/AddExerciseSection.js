@@ -27,12 +27,17 @@ export default function AddExerciseSection({setLatestExerciseAdded}) {
     return (
 
         <form id="addExerciseSection" method="post" encType="multipart/form" className={styles.AddExerciseSection} onSubmit={handleSubmit}>
-            <h3>Add exercises</h3>
-            <p><code>POST /api/users/:_id/exercises</code></p>
-            <input id="userid" type="text" name="id" placeholder=":_id" />
-            <input id="desc" type="text" name="description" placeholder="description*" />
-            <input id="dur" type="text" name="duration" placeholder="duration* (mins.)" />
-            <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" />
+            <h3>Add Exercises</h3>
+            <div className={styles.Inputs}>
+            <label htmlFor="id" >User ID </label>
+            <input id="userid" type="text" name="id"  className={styles.fieldsInput}/>
+            <label htmlFor="description">Exercise</label>
+            <input id="desc" type="text" name="description"  className={styles.fieldsInput}/>
+            <label htmlFor="duration">Duration (mins.)</label>
+            <input id="dur" type="text" name="duration" className={styles.fieldsInput} />
+            <label htmlFor="date">Date</label>
+            <input id="date" type="text" name="date" placeholder="YYYY-MM-DD"  className={styles.fieldsInput}/>
+            </div>
             <input type="submit" value="Submit" className={styles.submitButton}  />
         </form>
 

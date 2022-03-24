@@ -3,13 +3,11 @@
 ![demo](demo.gif)
 ## Description
 
-This is an exercise tracker that allows you to create a user, add entries to a training log and retrieve them.
+This is an exercise tracker that allows you to create a user, add entries to a training log and retrieve them. User can also filter by date and limit the number of results.
 
-User can also filter by date and limit the number of results.
+Main purpose of this project was for me to learn how to use MongoDB and Mongoose.
 
-Purpose of this project was for me to learn how to use MongoDB and Mongoose.
-
-The [deployed backend](https://fcc-exercise-trackr.herokuapp.com/) serves a basic static HTML page. I've also created a proper frontend using React, deployed on Netlify at [exercisetrackermern.netlify.app/](https://exercisetrackermern.netlify.app/) and accessible within the `/exercise-tracker` directory.
+The [deployed backend](https://fcc-exercise-trackr.herokuapp.com/) serves a basic static HTML page to allow you to test the features, but I've also created a proper frontend using React, deployed on Netlify at [exercisetrackermern.netlify.app](https://exercisetrackermern.netlify.app/) and stored in its own repo to avoid certain deployment issues: [mern-exercise-tracker-frontend](https://github.com/Antonio-Riccelli/mern-exercise-tracker-frontend).
 
 ## Technologies
 

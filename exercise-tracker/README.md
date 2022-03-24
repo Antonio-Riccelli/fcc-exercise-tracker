@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Exercise Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![demo](demo.gif)
+## Description
 
-## Available Scripts
+This is an exercise tracker that allows you to create a user, add entries to a training log and retrieve them.
 
-In the project directory, you can run:
+User can also filter by date and limit the number of results.
 
-### `npm start`
+Purpose of this project was for me to learn how to use MongoDB and Mongoose, and develop a MERN stack app.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This repo only contains the frontend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+- React
+- Node.JS
+- Express
+- MongoDB
+- Mongoose
+- HTML
+- CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+You will require access to the database this project is linked to, which can be provided by the project owner.
+Alternatively, you can set up your own MongoDB database and connect to it.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Clone the repository to your desired folder
+- cd into the project folder
+- open your IDE and run `npm i` to install all dependencies
+- run `npm start` or `npm run dev` to spin up the project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project diary and takeaways
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 07/03/2022
+  My goal for this project was to learn how to use MongoDb and Mongoose. I was quite surprised by how easy it all was, compared to using a standard PostgreSQL relational database. Interacting with MongoDB through Mongoose felt like writing standard JavaScript, just with new commands I hadn't used before. Reading about it, I also liked how easily scalable, flexible and performant it was. In addition to that, it's quite easy to set up a cluster via the MongoDB website and the GUI provided by MongoDB Atlas is a massive help. Documentation is also very detailed and simple to read and understand. 
 
-### `npm run eject`
+  MongoDB is essentially schemaless, although you can define schemas to model you database after, in your code.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  An additional takeaway was how to use the backend to serve a static frontend using the base GET route.  
+  The frontend is currently basic HTML, CSS and JavaScript, but my next step is to re-create it with React, so that this can be a full MERN stack app.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://spdx.org/licenses/MIT.html)

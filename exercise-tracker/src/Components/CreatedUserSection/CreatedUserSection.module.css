@@ -1,7 +1,49 @@
 .createdUserWrapper {
     background-color: antiquewhite;
-    width: 33.3%;
-    padding: 10px;
+    width: 75%;
+    padding: 30px;
     margin: 10px;
     border-radius: 15px;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.864);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createdUserWrapper:hover {
+    box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.864);
+}
+
+.createdUserData {
+    text-align: left;
+    width: 100%;
+}
+
+.createdUserTitle {
+    margin-bottom: 20px;
+}
+
+.userDataLabel {
+    font-weight: bold;
+    background-color: #FFF;
+    outline: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.864);
+}
+
+.userData {
+    font-weight: 400;
+}
+
+.Inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
 }
